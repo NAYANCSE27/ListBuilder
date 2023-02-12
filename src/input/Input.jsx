@@ -1,16 +1,27 @@
 import { useState } from "react";
-import Output from "../output/Output";
 import "./Input.css";
 
 const Input = (props) => {
   const { listMessage, setListMessage } = props;
   const [message, setMessage] = useState("");
 
+  function isValidMessage(text) {
+    console.log(text);
+    if (text === null) {
+      return false;
+    }
+    return true;
+  }
+
   function handleOnChange(event) {
     setMessage(event.target.value);
   }
   function handleOnClick() {
-    setListMessage([...listMessage, message]);
+    if (isValidMessage(message)) {
+      setListMessage([...listMessage, message]);
+    } else {
+      alert("Invalid input");
+    }
   }
 
   return (
