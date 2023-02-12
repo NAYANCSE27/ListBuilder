@@ -18,3 +18,7 @@ tr {
   border-radius: 10px;
   background-color: #ceedf7;
 }
+
+ul{
+  list-style: none;
+}
