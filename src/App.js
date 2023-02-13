@@ -5,7 +5,6 @@ import Output from "./output/Output";
 import "./App.css";
 
 function App() {
-  // const [newMessage, setNewMessage] = useState('');
   const [listMessage, setListMessage] = useState([]);
   return (
     <div className="App">
