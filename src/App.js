@@ -1,16 +1,11 @@
-import { useState } from "react";
-import Input from "./input/Input";
-import Output from "./output/Output";
+import Todo from "./components/Todo";
 
 import "./App.css";
 
 function App() {
-  // const [newMessage, setNewMessage] = useState('');
-  const [listMessage, setListMessage] = useState([]);
   return (
     <div className="App">
-      <Input listMessage={listMessage} setListMessage={setListMessage} />
-      <Output listMessage={listMessage} setListMessage={setListMessage} />
+      <Todo />
     </div>
   );
 }
