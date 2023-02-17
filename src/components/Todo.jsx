@@ -38,14 +38,25 @@ function CreateTask({ addTask }) {
   );
 }
 
+function validatedTask(message, tasks) {
+  if(typeof message === null) {
+    return "Null string is not accepted";
+  }
+
+  console.log(message);
+
+  tasks.map((task) => {
+    if(task.title === message) {
+      return "Task already exist";
+    }
+  });
+
+  return true;
+}
+
 function Todo() {
   const [tasksRemaining, setTasksRemaining] = useState(0);
-  const [tasks, setTasks] = useState([
-    {
-      title: "Hangout with friends",
-      completed: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     setTasksRemaining(tasks.filter((task) => !task.completed).length);
@@ -53,7 +64,13 @@ function Todo() {
 
   const addTask = (title) => {
     const newTasks = [...tasks, { title, completed: false }];
-    setTasks(newTasks);
+    try{
+      if(validatedTask(newTasks, tasks)){
+        setTasks(newTasks);
+      }
+    }catch(error){
+      alert(error);
+    }
   };
 
   const completeTask = (index) => {
