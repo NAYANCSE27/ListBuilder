@@ -38,19 +38,13 @@ function CreateTask({ addTask }) {
   );
 }
 
-function validatedTask(message, tasks) {
-  if(typeof message === null) {
-    return "Null string is not accepted";
-  }
-
-  console.log(message);
-
-  tasks.map((task) => {
-    if(task.title === message) {
-      return "Task already exist";
+function validatedTask(tasks, message) {
+  for (let i=0; i<tasks.length; i++) {
+    if(tasks[i].title === message){
+      alert("Message already exist");
+      return false;
     }
-  });
-
+  }
   return true;
 }
 
@@ -63,13 +57,9 @@ function Todo() {
   });
 
   const addTask = (title) => {
-    const newTasks = [...tasks, { title, completed: false }];
-    try{
-      if(validatedTask(newTasks, tasks)){
-        setTasks(newTasks);
-      }
-    }catch(error){
-      alert(error);
+    if (validatedTask(tasks, title) === true) {
+      const newTasks = [...tasks, { title, completed: false }];
+      setTasks(newTasks);
     }
   };
 
