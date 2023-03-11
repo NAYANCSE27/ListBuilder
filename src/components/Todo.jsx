@@ -38,16 +38,6 @@ function CreateTask({ addTask }) {
   );
 }
 
-function validatedTask(tasks, message) {
-  for (let i=0; i<tasks.length; i++) {
-    if(tasks[i].title === message){
-      alert("Message already exist");
-      return false;
-    }
-  }
-  return true;
-}
-
 function Todo() {
   const [tasksRemaining, setTasksRemaining] = useState(0);
   const [tasks, setTasks] = useState([]);
@@ -57,10 +47,8 @@ function Todo() {
   });
 
   const addTask = (title) => {
-    if (validatedTask(tasks, title) === true) {
-      const newTasks = [...tasks, { title, completed: false }];
-      setTasks(newTasks);
-    }
+    const newTasks = [...tasks, { title, completed: false }];
+    setTasks(newTasks);
   };
 
   const completeTask = (index) => {
@@ -100,3 +88,6 @@ function Todo() {
 }
 
 export default Todo;
+
+
+// extra information
